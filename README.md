@@ -1,2 +1,0 @@
-# Portal
-Website of Paperseed
