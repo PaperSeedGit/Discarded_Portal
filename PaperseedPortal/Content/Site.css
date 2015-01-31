@@ -6,7 +6,7 @@
 
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
+    border-top: solid 20px #629005;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -105,13 +105,13 @@ h5, h6 {
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
+        /*background: url("../Images/accent.png") no-repeat;*/
         padding-left: 10px;
         padding-top: 30px;
     }
 
     .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
+        /*background: url("../Images/heroAccent.png") no-repeat;*/
     }
 
 header .content-wrapper {
@@ -153,7 +153,7 @@ footer {
 }
 
     #login a {
-        background-color: #d3dce0;
+       /* background-color: #d3dce0; */
         margin-left: 10px;
         margin-right: 3px;
         padding: 2px 3px;
@@ -213,12 +213,12 @@ ul#menu {
 }
 
     .featured .content-wrapper {
-        background-color: #7ac0da;
-        background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-color: #99E007;
+        background-image: -ms-linear-gradient(left, #99E007 0%, #3E5A02 100%);
+        background-image: -o-linear-gradient(left, #99E007 0%, #3E5A02 100%);
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #99E007), color-stop(1, #3E5A02));
+        background-image: -webkit-linear-gradient(left, #99E007 0%, #3E5A02 100%);
+        background-image: linear-gradient(left, #99E007 0%, #3E5A02 100%);
         color: #3e5667;
         padding: 20px 40px 30px 40px;
     }
