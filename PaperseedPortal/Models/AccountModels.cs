@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,10 +10,11 @@ using System.Web.Security;
 
 namespace PaperseedPortal.Models
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("PsDataModelConnectionSettings")
         {
         }
 
