@@ -1,5 +1,4 @@
-﻿using MySql.Data.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,12 +9,12 @@ using System.Web.Security;
 
 namespace PaperseedPortal.Models
 {
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("PsDataModelConnectionSettings")
+            : base("DefaultConnection")
         {
+            
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
@@ -28,6 +27,14 @@ namespace PaperseedPortal.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        [MaxLength(100)]
+        public string FirstName { get; set; }
+        [MaxLength(100)]
+        public string LastName { get; set; }
+        [DataType(dataType: DataType.Date)]
+        public DateTime? Dob { get; set; }
+        [DataType(dataType:DataType.EmailAddress)]
+        public string Email { get; set; }
     }
 
     public class RegisterExternalLoginModel
