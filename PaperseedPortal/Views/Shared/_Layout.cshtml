@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Paperseed</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link type="text/css" rel="stylesheet" href="~/Content/materialize/css/materialize.css" media="screen,projection" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar-fixed">
+        <!-- Navigation for Desktop screens -->
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="http://www.paperseed.in" class="brand-logo" style="padding-left:20px">Paperseed</a>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li>
+                            @Html.ActionLink("Account", "Manage", "Account", routeValues: null, htmlAttributes: new { })
+                        </li>
+                        @*<li class="divider"></li>*@
+                        <li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm1" }))
+                            {
+                            @Html.AntiForgeryToken()
+                            }
+                            <a href="javascript:document.getElementById('logoutForm1').submit()">Log off</a>
+                        </li>
+                    </ul>
+                    <ul class="right side-nav">
+                        <!-- Dropdown Trigger -->
+                        @if (Request.IsAuthenticated)
+                        {
+                            var message = "Hello " + User.Identity.Name + "!";
+                        <li>
+                            <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                                @message
+                                <i class="mdi-navigation-arrow-drop-down right" style="margin-left:0px"></i>
+                            </a>
+                        </li>
+                        }
+                        else
+                        {
+                        <li>
+                            @Html.ActionLink("Login", "Login", "Account")
+                        </li>
+                        <li style="border-right:1px solid #ce4040">
+                            @Html.ActionLink("Register", "Register", "Account")
+                        </li>
+                        }
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navigation compatible with small screens -->
+        <nav class="hide-on-large-only">
+            <div class="nav-wrapper">
+                <a href="http://www.paperseed.in" class="brand-logo" style="padding-left:20px">Paperseed</a>
+                <ul id="nav-mobile" class="right side-nav">
+                    <!-- Dropdown Trigger -->
+                    @if (Request.IsAuthenticated)
+                    {
+                        var message = "Hello " + User.Identity.Name + "!";
+                    <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                            @message
+                            <i class="mdi-navigation-arrow-drop-down right" style="margin-left:0px"></i>
+                        </a>
+                    </li>
+                    }
+                    else
+                    {
+                    <li>
+                        @Html.ActionLink("Login", "Login", "Account")
+                    </li>
+                    <li style="border-right:1px solid #ce4040">
+                        @Html.ActionLink("Register", "Register", "Account")
+                    </li>
+                    }
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+
+                <!-- Include this line below -->
+                <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+                <!-- End -->
+
+            </div>
+        </nav>
+    </div>
+
+    <!-- Body -->
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Thanks for visiting!</h5>
+                    <p class="grey-text text-lighten-4">We are under construction. Do visit again.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "grey-text text-lighten-3" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { @class = "grey-text text-lighten-3" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { @class = "grey-text text-lighten-3" })</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <p> ©  @DateTime.Now.Year - Paperseed.in</p>
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/Content/materialize/js/materialize.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: true, // Does not change width of dropdown to that of the activator
+                hover: false, // Activate on click
+                alignment: 'right', // Aligns dropdown to left or right edge (works with constrain_width)
+                gutter: 0, // Spacing from edge
+            }
+            );
+            $(".button-collapse").sideNav();
+            $('.slider').slider({ full_width: true,  });         
+        })
+    </script>
+</body>
+</html>
