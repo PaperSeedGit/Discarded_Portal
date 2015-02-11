@@ -27,7 +27,7 @@ namespace PaperseedPortal
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<UsersContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<UsersContext, Configuration>());
         }
     }
 }
